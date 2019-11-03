@@ -4,7 +4,9 @@
 
 #pragma once
 
+#include "IBinary.h"
 #include <string>
+#include <memory>
 
 namespace ChickenHook {
 
@@ -15,8 +17,12 @@ namespace ChickenHook {
          * @param path to binary or shared library
          * @return
          */
-        bool open(const std::string &path);
+        static std::unique_ptr<IBinary> open(const std::string &path);
 
+        /**
+         * Close file
+         * @return
+         */
         bool close();
 
         /**

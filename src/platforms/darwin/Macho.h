@@ -5,13 +5,14 @@
 #pragma once
 
 
+#include <chickenHook/staticInjector/IBinary.h>
+
 namespace ChickenHook {
 
 
-class Macho : public IBinary {
+    class Macho : public IBinary {
 
-};
-
+    };
 
 
 }

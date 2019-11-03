@@ -8,8 +8,8 @@
 namespace ChickenHook {
 
 
-class IArchitecture {
+    class IArchitecture {
 
-};
+    };
 
 }
