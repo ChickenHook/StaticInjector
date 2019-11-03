@@ -5,11 +5,12 @@
 #pragma once
 
 
-namespace ChickenHook {
+namespace ChickenHook : public IArchitecture {
 
 
-class Elf : public IBinary {
+class x86_64 {
 
 };
+
 
 }

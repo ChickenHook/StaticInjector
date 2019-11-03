@@ -5,12 +5,14 @@
 #pragma once
 
 
-namespace ChickenHook {
+namespace ChickenHook : public IArchitecture {
 
 
-class x86_64 {
+
+class arm64_v8a {
 
 };
+
 
 
 }

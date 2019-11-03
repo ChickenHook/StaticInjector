@@ -8,7 +8,7 @@
 namespace ChickenHook {
 
 
-class Macho {
+class Macho : public IBinary {
 
 };
 
