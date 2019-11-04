@@ -6,6 +6,14 @@
 #include <BinaryEditor.h>
 #include <iostream>
 
+void __attribute__  ((constructor)) testInit(){
+    printf("HALLO!");
+}
+
+/*extern "C" void _Unwind_Resume(){
+
+}*/
+
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         std::cout << "Please specify injection path" << std::endl;

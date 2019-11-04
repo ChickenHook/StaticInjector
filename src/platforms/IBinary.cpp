@@ -1,5 +1,5 @@
 //
-// Created by sascharoth on 03.11.19.
+// Created by Sascha Roth on 03.11.19.
 //
 
 #include "chickenHook/staticInjector/IBinary.h"

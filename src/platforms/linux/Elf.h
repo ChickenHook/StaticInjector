@@ -31,6 +31,15 @@ namespace ChickenHook {
         std::string _path;
         std::ifstream _is;
         std::vector<uint8_t> _data;
+
+        template<class K>
+        K *getSectionByName(const std::string &name);
+
+        bool is64();
+
+        bool isLittleEndian();
+
+        void inject();
     };
 
 }
