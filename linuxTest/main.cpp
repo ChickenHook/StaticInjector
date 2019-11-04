@@ -5,11 +5,7 @@
 
 #include <BinaryEditor.h>
 #include <iostream>
-
-void __attribute__  ((constructor)) testInit(){
-    printf("HALLO!");
-}
-
+#include <unistd.h>
 /*extern "C" void _Unwind_Resume(){
 
 }*/
@@ -21,6 +17,7 @@ int main(int argc, char *argv[]) {
     }// TODO add nice user interface here
 
     std::cout << "Trying to parse file <" << argv[1] << ">" << std::endl;
+    sleep(1);
     ChickenHook::BinaryEditor binaryEditor;
     binaryEditor.open(argv[1]);
     return 0;

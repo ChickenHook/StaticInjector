@@ -7,3 +7,5 @@ target_link_libraries(linuxTest
         )
 
 set_property(TARGET linuxTest PROPERTY CXX_STANDARD 11)
+
+add_subdirectory(exampleAttack)
