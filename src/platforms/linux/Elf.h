@@ -24,8 +24,14 @@ namespace ChickenHook {
 
         bool close() override;
 
+        virtual void replaceDependency(const std::string &);
+
+        virtual void printInfo();
+
+
+
     protected:
-        std::unique_ptr<IArchitecture> decideArchitecture() override;
+        uint32_t getArchitecture() override;
 
     private:
         std::string _path;
@@ -38,8 +44,6 @@ namespace ChickenHook {
         bool is64();
 
         bool isLittleEndian();
-
-        void inject();
     };
 
 }

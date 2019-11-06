@@ -17,10 +17,8 @@ add_library( # Sets the name of the library.
         platforms/IBinary.cpp
         platforms/linux/Elf.cpp
         platforms/darwin/Macho.cpp
-        architectures/IArchitecture.cpp
-        architectures/intel/x86_64.cpp
-        architectures/arm/arm64_v8a.cpp
-        tools/HexDump.cpp)
+        tools/HexDump.cpp
+        tools/LoggingCallback.cpp)
 
 target_include_directories(${PROJECT_NAME} INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/chickenHook/staticInjector/>
@@ -32,4 +30,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         ./
         )
 
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)

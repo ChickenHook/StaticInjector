@@ -30,7 +30,7 @@ namespace ChickenHook {
          * @param path to static library
          * @return
          */
-        bool inject(const std::string &path);
+        void setLoggingCallback(void (*logCallback)(const std::string &));
     };
 
 }

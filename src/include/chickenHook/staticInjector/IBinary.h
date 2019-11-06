@@ -7,7 +7,7 @@
 
 #include <string>
 #include <memory>
-#include "architectures/IArchitecture.h"
+
 
 namespace ChickenHook {
 
@@ -20,10 +20,14 @@ namespace ChickenHook {
 
         virtual bool close() = 0;
 
+        virtual void replaceDependency(const std::string &) = 0;
+
+        virtual void printInfo() = 0;
+
     protected:
         IBinary(const std::string &);
 
-        virtual std::unique_ptr<IArchitecture> decideArchitecture() = 0;
+        virtual uint32_t getArchitecture() = 0;
 
     private:
     };

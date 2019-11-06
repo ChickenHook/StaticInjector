@@ -2,6 +2,7 @@
 // Created by Sascha Roth on 03.11.19.
 //
 
+#include <tools/LoggingCallback.h>
 #include "chickenHook/staticInjector/BinaryEditor.h"
 
 namespace ChickenHook {
@@ -15,7 +16,7 @@ namespace ChickenHook {
         return false;
     }
 
-    bool BinaryEditor::inject(const std::string &path) {
-        return false;
+    void BinaryEditor::setLoggingCallback(void (*logCallback)(const std::string&)) {
+        setLogFunction(logCallback);
     }
 }

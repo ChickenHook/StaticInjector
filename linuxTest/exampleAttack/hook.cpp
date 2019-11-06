@@ -92,7 +92,7 @@ pthread_t hooksInstallThread;
 
 void *installHooks(void*) {
     printf("Started install hooks\n");
-    usleep(1000);
+    usleep(5*1000*1000);
     ChickenHook::Hooking::getInstance().setLoggingCallback(&logCallback);
     ChickenHook::Hooking::getInstance().hook((void *) &read, (void *) &my_read);
     ChickenHook::Hooking::getInstance().hook((void *) &strcpy, (void *) &my_strcpy);
