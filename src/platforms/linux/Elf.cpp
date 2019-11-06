@@ -6,14 +6,13 @@
 #include "tools/HexDump.h"
 #include <iostream>
 #include <utility>
-#include <stdio.h>
-#include <assert.h>
+#include <cstdio>
+#include <cassert>
 #include <fcntl.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <unistd.h>
-#include <string.h>
-#include <errno.h>
-#include <stdbool.h>
+#include <cstring>
+#include <cerrno>
 #include <elf.h>
 #include <tools/LoggingCallback.h>
 
@@ -111,10 +110,8 @@ namespace ChickenHook {
         switch (_data[EI_DATA]) {
             case ELFDATA2LSB:
                 return true;
-                break;
             case ELFDATA2MSB:
                 return false;
-                break;
             default:
                 log("INVALID endian format"); // TODO exception
                 break;
@@ -154,10 +151,10 @@ namespace ChickenHook {
     }*/
     uint32_t Elf::getArchitecture() {
         if (is64()) {
-            Elf64_Ehdr *header = (Elf64_Ehdr *) &_data[0];
+            auto *header = (Elf64_Ehdr *) &_data[0];
             return header->e_machine;
         } else {
-            Elf32_Ehdr *header = (Elf32_Ehdr *) &_data[0];
+            auto *header = (Elf32_Ehdr *) &_data[0];
             return header->e_machine;
         }
     }
@@ -173,14 +170,11 @@ namespace ChickenHook {
     template<class K>
     K *Elf::getSectionByName(const std::string &name) {
         if (is64()) {
-            Elf64_Ehdr *header = (Elf64_Ehdr *) &_data[0];
-            for (int i = 0; i < header->e_phnum; i++) {
-                auto phdr = (Elf64_Phdr *) &_data[header->e_phoff + i];
-            }
+            auto *header = (Elf64_Ehdr *) &_data[0];
             //shdrs[shstrtabIndex].sh_offset
             for (int k = 0; k < header->e_shnum; k++) {
                 auto shdr = &((Elf64_Shdr *) &_data[header->e_shoff])[k];
-                int off = (((Elf64_Shdr *) &_data[header->e_shoff]))[header->e_shstrndx].sh_offset;
+                uint64_t off = (((Elf64_Shdr *) &_data[header->e_shoff]))[header->e_shstrndx].sh_offset;
                 char *data = reinterpret_cast<char *>(&_data[off]);
                 std::string sectionName(data + shdr->sh_name);
                 //log("shdr %d %p %d %s", off, data, shdr->sh_name, sectionName.c_str());
@@ -191,10 +185,7 @@ namespace ChickenHook {
                 }
             }
         } else {
-            Elf32_Ehdr *header = (Elf32_Ehdr *) &_data[0];
-            for (int i = 0; i < header->e_phnum; i++) {
-                auto phdr = (Elf64_Phdr *) &_data[header->e_phoff + i];
-            }
+            auto *header = (Elf32_Ehdr *) &_data[0];
             //shdrs[shstrtabIndex].sh_offset
             for (int k = 0; k < header->e_shnum; k++) {
                 auto shdr = &((Elf32_Shdr *) &_data[header->e_shoff])[k];
@@ -215,12 +206,12 @@ namespace ChickenHook {
 
     void Elf::replaceDependency(const std::string &symbol) {
         if (is64()) {
-            Elf64_Shdr *dynamic = getSectionByName<Elf64_Shdr>(std::string(".dynamic"));
+            auto *dynamic = getSectionByName<Elf64_Shdr>(std::string(".dynamic"));
             if (dynamic == nullptr) {
                 log("Could not find dynamic section!");
                 return;
             }
-            Elf64_Shdr *dynstr = getSectionByName<Elf64_Shdr>(".dynstr");
+            auto *dynstr = getSectionByName<Elf64_Shdr>(".dynstr");
             if (dynstr == nullptr) {
                 log("Could not find dynstr section!");
                 return;
@@ -231,7 +222,7 @@ namespace ChickenHook {
             char *rpath = nullptr;
             log("Searching for libraries in dynamic section");
 
-            Elf64_Dyn *dyn = (Elf64_Dyn *) (&_data[(dynamic->sh_offset)]);
+            auto *dyn = (Elf64_Dyn *) (&_data[(dynamic->sh_offset)]);
             for (; dyn->d_tag != DT_NULL; dyn++) {
                 if (dyn->d_tag == DT_NEEDED) {
                     if (dyn->d_un.d_val != 0) {
@@ -260,12 +251,12 @@ namespace ChickenHook {
                 }
             }
         } else {
-            Elf32_Shdr *dynamic = getSectionByName<Elf32_Shdr>(std::string(".dynamic"));
+            auto *dynamic = getSectionByName<Elf32_Shdr>(std::string(".dynamic"));
             if (dynamic == nullptr) {
                 log("Could not find dynamic section!");
                 return;
             }
-            Elf32_Shdr *dynstr = getSectionByName<Elf32_Shdr>(".dynstr");
+            auto *dynstr = getSectionByName<Elf32_Shdr>(".dynstr");
             if (dynstr == nullptr) {
                 log("Could not find dynstr section!");
                 return;
@@ -276,7 +267,7 @@ namespace ChickenHook {
             char *rpath = nullptr;
             log("Searching for libraries in dynamic section");
 
-            Elf32_Dyn *dyn = (Elf32_Dyn *) (&_data[(dynamic->sh_offset)]);
+            auto *dyn = (Elf32_Dyn *) (&_data[(dynamic->sh_offset)]);
             for (; dyn->d_tag != DT_NULL; dyn++) {
                 if (dyn->d_tag == DT_NEEDED) {
                     if (dyn->d_un.d_val != 0) {
