@@ -4,9 +4,7 @@
 #include <chickenHook/hooking.h>
 #include <chickenHook/logging.h>
 
-extern "C" void _Unwind_Resume() {
 
-}
 
 void logCallback(const std::string logtext) {
 

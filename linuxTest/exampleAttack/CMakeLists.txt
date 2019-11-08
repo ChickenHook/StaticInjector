@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 add_library (linuxAttack SHARED
-        hook.cpp)
+        hook.cpp
+        symbolHook.cpp)
 
 target_include_directories(linuxAttack PUBLIC
         ${CMAKE_SOURCE_DIR}/artifacts/ChickenHook/${CMAKE_LIBRARY_ARCHITECTURE}/include/

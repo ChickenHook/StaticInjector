@@ -1,19 +1,27 @@
 
+#include <string>
+#include <unistd.h>
+#include <dlfcn.h>
 
+#ifdef __x86_64__
+#define SYMBOL_HOOK(a) asm __volatile__ ("funB: \npop %%rbp   \njmp *%0 \npush   %%rbp\n" : : "m" (a))
+#else
+#error "UNSUPPORTED ARCHITECTURE"
+#endif
 
-void funA(std::string line) {
-    printf("line: %s", line.c_str());
+void *handle;
+
+void funA() {
+    printf("ERROR, THIS SHOULD NEVER APPEAR");
 }
 
 extern "C" __attribute__((used)) void *p = (void *) funA;
 
-void funB(){
-    asm __volatile__ ("funB: \npop %%rbp   \njmp *%0 \npush   %%rbp\n" : : "m" (p));
+extern "C" void _Unwind_Resume() {
+    SYMBOL_HOOK(p);
 }
 
-void ftest() {
-    void (*strFun)(std::string);
-    strFun = (void (*)(std::string)) &funB;
-    sleep(1);
-    strFun("This line should be printed!\n");
+void __attribute__  ((constructor (103))) symbolHookInit() {
+    handle = dlopen("libgcc_s.so.1", RTLD_LAZY);
+    p = dlsym(handle,"_Unwind_Resume");
 }

@@ -18,4 +18,3 @@ ENDIF ()
 IF (LINUX)
     add_subdirectory(linuxTest)
 ENDIF (LINUX)
-
