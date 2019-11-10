@@ -3,11 +3,7 @@
 #include <unistd.h>
 #include <dlfcn.h>
 
-#ifdef __x86_64__
-#define SYMBOL_HOOK(a) asm __volatile__ ("funB: \npop %%rbp   \njmp *%0 \npush   %%rbp\n" : : "m" (a))
-#else
-#error "UNSUPPORTED ARCHITECTURE"
-#endif
+#include "symbolhook.h"
 
 void *handle;
 
@@ -21,7 +17,7 @@ extern "C" void _Unwind_Resume() {
     SYMBOL_HOOK(p);
 }
 
-void __attribute__  ((constructor (103))) symbolHookInit() {
+static void __attribute__  ((constructor (103))) hookInit() {
     handle = dlopen("libgcc_s.so.1", RTLD_LAZY);
-    p = dlsym(handle,"_Unwind_Resume");
+    p = dlsym(handle, "_Unwind_Resume");
 }

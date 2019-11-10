@@ -8,7 +8,10 @@
 namespace ChickenHook {
     std::unique_ptr<IBinary> BinaryEditor::open(const std::string &path) {
         auto header = IBinary::parseHeader(path);
-        (*header).open();
+        if (!(*header).open()) {
+            log("BinaryEditor [-] open [-] could not open file <%s>", path.c_str());
+            return nullptr;
+        }
         return header;
     }
 
@@ -16,7 +19,7 @@ namespace ChickenHook {
         return false;
     }
 
-    void BinaryEditor::setLoggingCallback(void (*logCallback)(const std::string&)) {
+    void BinaryEditor::setLoggingCallback(void (*logCallback)(const std::string &)) {
         setLogFunction(logCallback);
     }
 }

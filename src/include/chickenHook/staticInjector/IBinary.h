@@ -24,6 +24,11 @@ namespace ChickenHook {
 
         virtual void printInfo() = 0;
 
+        virtual void addLibraryDependency(const std::string &library) = 0;
+
+        virtual void
+        generateSymbolHooks(const std::string &libraryName, const std::string &outputFileName) = 0;
+
     protected:
         IBinary(const std::string &);
 
