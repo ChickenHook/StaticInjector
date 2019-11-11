@@ -1,0 +1,2 @@
+include ':androidTest'
+rootProject.name='StaticInjector'
