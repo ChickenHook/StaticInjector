@@ -19,7 +19,10 @@ add_library( # Sets the name of the library.
         platforms/darwin/Macho.cpp
         tools/HexDump.cpp
         tools/LoggingCallback.cpp
-        generators/SymbolHookGenerator.cpp)
+        generators/SymbolHookGenerator.cpp
+        platforms/linux/parser/Elf64Parser.cpp
+        platforms/linux/parser/Elf32Parser.cpp
+        platforms/linux/parser/IElfParser.cpp)
 
 target_include_directories(${PROJECT_NAME} INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/chickenHook/staticInjector/>
