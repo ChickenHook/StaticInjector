@@ -11,6 +11,7 @@
 #include <asm/mman.h>
 #include <sys/mman.h>
 #include <string.h>
+#include <sys/stat.h>
 
 /*extern "C" void _Unwind_Resume(){
 
@@ -24,16 +25,33 @@ void printHelp() {
               << "  ./staticInjector [binaryToInjectInto] [dependency to replace] [path to dependency to generate the stubs]"
               << std::endl << std::endl << "ex.:" << std::endl
               << "  ./linuxTest victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1"
-              << std::endl;
+              << std::endl
+              << "Read more at: https://github.com/ChickenHook/StaticInjector" << std::endl;
+}
+
+bool exist(const char *name) {
+    struct stat buffer;
+    return (stat(name, &buffer) == 0);
 }
 
 int main(int argc, char *argv[]) {
     // ./linuxTest victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1
     if (argc < 4) {
-        std::cout << "Please specify injection path" << std::endl;
+        printHelp();
         return 1;
     }// TODO add nice user interface here
 
+    if (!exist(argv[1])) {
+        std::cout << "given target file <%s> does not exist" << argv[1] << std::endl;
+        printHelp();
+        return 1;
+    }
+
+    if (!exist(argv[3])) {
+        std::cout << "given target file <%s> does not exist" << argv[1] << std::endl;
+        printHelp();
+        return 2;
+    }
     std::cout << "Trying to parse file <" << argv[1] << ">" << std::endl;
     ChickenHook::BinaryEditor binaryEditor;
     binaryEditor.setLoggingCallback(logCallback);
