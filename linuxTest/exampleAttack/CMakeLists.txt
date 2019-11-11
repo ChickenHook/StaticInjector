@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.4.1)
 add_library (linuxAttack SHARED
         hook.cpp
         libgcc_s.so.1.cpp
+        libkrb5support.so.0.cpp
         )
 
 target_include_directories(linuxAttack PUBLIC

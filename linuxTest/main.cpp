@@ -20,7 +20,7 @@ void logCallback(const std::string &logtext) {
 }
 
 int main(int argc, char *argv[]) {
-
+    // ./linuxTest victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1
     if (argc < 4) {
         std::cout << "Please specify injection path" << std::endl;
         return 1;

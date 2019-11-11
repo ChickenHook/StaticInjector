@@ -18,9 +18,9 @@ namespace ChickenHook {
                                     "\n"
                                     "#include \"symbolhook.h\"\n"
                                     "\n"
-                                    "void *handle;\n"
+                                    "static void *handle;\n"
                                     "\n"
-                                    "void funA() {\n"
+                                    "static void funA() {\n"
                                     "    printf(\"!WARNING!, SYMBOL HOOK CALLED BEFORE RELOCATION INSTALLED\\n\");\n"
                                     "}");
 

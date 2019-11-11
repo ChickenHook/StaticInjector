@@ -4,7 +4,7 @@
 
 #include "symbolhook.h"
 
-void *handle;
+static void *handle;
 
 void funA() {
     printf("ERROR, THIS SHOULD NEVER APPEAR\n");
