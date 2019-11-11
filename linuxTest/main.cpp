@@ -24,7 +24,7 @@ void printHelp() {
     std::cout << "ChickenHook - StaticInjector" << std::endl << "Usage:" << std::endl << std::endl
               << "  ./staticInjector [binaryToInjectInto] [dependency to replace] [path to dependency to generate the stubs]"
               << std::endl << std::endl << "ex.:" << std::endl
-              << "  ./linuxTest victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1"
+              << "  ./staticInjector victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1"
               << std::endl
               << "Read more at: https://github.com/ChickenHook/StaticInjector" << std::endl;
 }
