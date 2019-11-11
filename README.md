@@ -40,3 +40,14 @@ WIP
 
 ### Android
 WIP
+
+
+### Example attacks
+
+# Firefox
+
+[![](http://img.youtube.com/vi/_4K2d7FFHqo/0.jpg)](http://www.youtube.com/watch?v=_4K2d7FFHqo "Linux attack firefox")
+
+# Skype
+
+(WIP)
