@@ -19,6 +19,14 @@ void logCallback(const std::string &logtext) {
     std::cout << logtext << std::endl;
 }
 
+void printHelp() {
+    std::cout << "ChickenHook - StaticInjector" << std::endl << "Usage:" << std::endl << std::endl
+              << "  ./staticInjector [binaryToInjectInto] [dependency to replace] [path to dependency to generate the stubs]"
+              << std::endl << std::endl << "ex.:" << std::endl
+              << "  ./linuxTest victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1"
+              << std::endl;
+}
+
 int main(int argc, char *argv[]) {
     // ./linuxTest victimTest libgcc_s.so.1 /lib/x86_64-linux-gnu/libgcc_s.so.1
     if (argc < 4) {

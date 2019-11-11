@@ -263,7 +263,7 @@ namespace ChickenHook {
             return true;
         })) {
             log("Error while iterate needed, abort...");
-            return;
+            return "";
         }
 
         // write changes
