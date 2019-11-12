@@ -52,4 +52,7 @@ Check this video (Please enable subtitles):
 
 # Skype
 
+Read more in our wiki:
+[a link](https://github.com/ChickenHook/StaticInjector/wiki/How-to-create-a-linux-attack-(step-by-step-guide) "How to create a linux attack (step by step guide)")
+
 (WIP)
