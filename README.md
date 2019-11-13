@@ -55,8 +55,9 @@ Check this video (Please enable subtitles):
 
 Check this video (Please enable subtitles):
 
-[![](http://img.youtube.com/vi/kbrenIx8OrI/0.jpg)](http://www.youtube.com/watch?v=kbrenIx8OrI "How to hack Skype on Linux")
+[![](doc/skypeAttack.gif)](http://www.youtube.com/watch?v=kbrenIx8OrI "How to hack Skype on Linux")
 
+http://img.youtube.com/vi/kbrenIx8OrI/0.jpg
 
 Read more in our wiki:
 [How to create a linux attack (skype example)](https://github.com/ChickenHook/StaticInjector/wiki/How-to-create-a-linux-attack-(step-by-step-guide) "How to create a linux attack (step by step guide)")
