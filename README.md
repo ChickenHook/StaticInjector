@@ -1,6 +1,6 @@
 # ChickenHook - StaticInjector
 
-## Intrudiction
+## Introduction
 
 The StaticInjector is build for injecting code into an already compiled binary (shared object or executable).
 
