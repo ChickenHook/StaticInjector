@@ -59,7 +59,7 @@ Check this video (Please enable subtitles):
 
 
 Read more in our wiki:
-[a link](https://github.com/ChickenHook/StaticInjector/wiki/How-to-create-a-linux-attack-(step-by-step-guide) "How to create a linux attack (step by step guide)")
+[How to create a linux attack (skype example)](https://github.com/ChickenHook/StaticInjector/wiki/How-to-create-a-linux-attack-(step-by-step-guide) "How to create a linux attack (step by step guide)")
 
 
 # Feel free to get a part of ChickenHook!
